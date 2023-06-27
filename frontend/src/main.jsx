@@ -8,8 +8,6 @@ import {
 } from 'react-router-dom';
 // Components
 import App from './components/App.jsx'
-// Styles
-import './styles/index.css'
 
 
 // --- Routes
@@ -18,6 +16,28 @@ const router = createBrowserRouter([
     path: "/",
     element: <App/>,
   },
+  {
+    path: "/signup",
+    element: <p>Signup page!</p>,
+  },
+  {
+    path: "/login",
+    element: <p>Login page!</p>,
+  },
+  {
+    path: "/home",
+    element: <p>Home page!</p>,
+  },
+  {
+    path: "/settings",
+    element: <p>Settings page!</p>,
+  },
+  {
+    path: "/dev",
+    element: <p>To develop React components:<br/>
+      1. import them into main.jsx,<br/>
+      2. replace the new React component with this 'p' tag</p>,
+  }
 ]);
 
 
