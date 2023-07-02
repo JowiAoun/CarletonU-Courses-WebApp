@@ -1,23 +1,26 @@
-import { useState } from 'react'
 import '../styles/styles.css'
 
 export default function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="text-center">
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button className='text-3xl font-bold underline' onClick={() => setCount((count) => count + 1)}>
-          (click here) count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+    <>
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="">
+          <h1 className="text-center flex self-end text-5xl m-auto">CarletonU Courses</h1>
+        </div>
+        <div className="">
+          <div className='flex self-start m-auto'>
+            <input 
+              type="search" 
+              id="default-search" 
+              className="block w-full p-4 pl-10 text-lg text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              placeholder="Enter a course..."
+            />
+            <button className='block w-1/3 rounded-lg bg-indigo-500'>
+                Search
+            </button>
+          </div>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    </>
   )
 }
