@@ -1,14 +1,15 @@
 import '../styles/styles.css'
 import {NavLink} from "react-router-dom"
+import Filters from '../components/Filters'
 
 export default function Search() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center min-h-screen">
+      <div className="flex flex-col items-center pt-60 min-h-screen">
         <div className="">
           <h1 className="text-center flex self-end text-5xl m-auto">CarletonU Courses</h1>
         </div>
-        <div className="">
+        <div className="p-2">
           <div className='flex self-start m-auto'>
             <input 
               type="search" 
@@ -19,6 +20,7 @@ export default function Search() {
             <NavLink className='block w-1/3 rounded-lg bg-indigo-500' to="courses">Search</NavLink>
           </div>
         </div>
+        <Filters/>
       </div>
     </>
   )
