@@ -24,7 +24,7 @@ function CheckBox(props){
 const TermDropdown = () => {
     const [isList, setIsList] = useState(false);
     return (
-        <div>
+        <div className="px-1">
             <div onClick={() => setIsList(!isList)} className="w-64 p-4 shadow rounded bg-white text-sm font-medium leading-none text-gray-800 flex items-center justify-between cursor-pointer">
                 Term
                 <div>
@@ -62,7 +62,7 @@ const TermDropdown = () => {
 const YearDropdown = () => {
     const [isList, setIsList] = useState(false);
     return (
-        <div>
+        <div className="px-1">
             <div onClick={() => setIsList(!isList)} className="w-64 p-4 shadow rounded bg-white text-sm font-medium leading-none text-gray-800 flex items-center justify-between cursor-pointer">
                 Year
                 <div>
@@ -101,7 +101,7 @@ const YearDropdown = () => {
 const PlaceDropdown = () => {
     const [isList, setIsList] = useState(false);
     return (
-        <div>
+        <div className="px-1">
             <div onClick={() => setIsList(!isList)} className="w-64 p-4 shadow rounded bg-white text-sm font-medium leading-none text-gray-800 flex items-center justify-between cursor-pointer">
                 Year
                 <div>
