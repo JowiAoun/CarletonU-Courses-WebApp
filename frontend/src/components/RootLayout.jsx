@@ -7,8 +7,8 @@ function ListItem(item) {
                 <a
                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
-                    <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
-                    <NavLink to={item.link}>{item.term}</NavLink>
+                    <i className="fab fa-facebook-square text-3xl leading-lg text-white opacity-75"></i>
+                    <NavLink className="text-xl" to={item.link}>{item.term}</NavLink>
                 </a>
             </li>
         </>
@@ -58,6 +58,17 @@ function NavBar(){
     );
 }
 
+function InsideBackground(){
+    return(
+        <div className='backdrop-blur-sm backdrop-brightness-50'>
+            <NavBar />
+            <main>
+                <Outlet />
+            </main>
+        </div>
+    );
+}
+
 export default function RootLayout(){
     const backgroundImageURL = "https://around.uoregon.edu/sites/default/files/styles/landscape_xl/public/field/image/lecture_hall-shutterstock.jpg?itok=9flpJ22p";
     return(
@@ -68,12 +79,8 @@ export default function RootLayout(){
                 style={{
                 backgroundImage: `url(${backgroundImageURL})`,
                 }}>
-                    <div className='backdrop-blur-sm bg-blend-darken'></div>
-                        <NavBar />
-                        <main>
-                            <Outlet />
-                        </main>
-                    </div>
+                    <InsideBackground />
+                </div>
             </div>
         </>
     );
