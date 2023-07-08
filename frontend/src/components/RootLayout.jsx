@@ -2,16 +2,14 @@ import React from "react";
 import {NavLink, Outlet} from "react-router-dom"
 function ListItem(item) {
     return (
-        <>
           <li className="nav-item">
-                <a
+                <div
                 className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
                 >
                     <i className="fab fa-facebook-square text-3xl leading-lg text-white opacity-75"></i>
                     <NavLink className="text-xl" to={item.link}>{item.term}</NavLink>
-                </a>
+                </div>
             </li>
-        </>
     );
 }
 function List() {
@@ -72,7 +70,6 @@ function InsideBackground(){
 export default function RootLayout(){
     const backgroundImageURL = "https://around.uoregon.edu/sites/default/files/styles/landscape_xl/public/field/image/lecture_hall-shutterstock.jpg?itok=9flpJ22p";
     return(
-        <>
             <div className="flex justify-center items-center h-screen">
                 <div
                 className="bg-cover bg-center h-full w-full"
@@ -82,6 +79,5 @@ export default function RootLayout(){
                     <InsideBackground />
                 </div>
             </div>
-        </>
     );
 }
