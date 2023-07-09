@@ -7,9 +7,9 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import Search from "./pages/Search"
-import Courses from './pages/Courses'
-import About from "./pages/About"
+import SearchPage from "./pages/SearchPage"
+import Courses from './pages/CoursesPage'
+import About from "./pages/AboutPage"
 
 //layouts
 import RootLayout from './components/RootLayout';
@@ -17,7 +17,7 @@ import RootLayout from './components/RootLayout';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<Search />} />
+      <Route index element={<SearchPage />} />
       <Route path="courses" element={<Courses />} />
       <Route path="about" element={<About />} />
     </Route>
