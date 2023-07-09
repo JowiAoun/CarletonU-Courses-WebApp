@@ -6,6 +6,7 @@ import express, { Request, Response } from "express";
 import mongoose, { Mongoose } from "mongoose";
 // Files
 import { searchCourses } from "./functions";
+import Course from "./types";
 
 // --- App
 const app = express(); // Create app object
@@ -43,14 +44,24 @@ app.get("/settings", (req: Request, res: Response) => {
 });
 
 app.post("/api/search", (req: Request, res: Response) => {
+  //TODO: Find a way to not hard-code search settings
   const queryParams = req.query;
 
-  const search: string = queryParams.search as string || "";
-  const term: string = queryParams.term as string || "";
-  const year: string = queryParams.year as string || "-1";
-  const type: string = queryParams.type as string || "";
+  let code: string = queryParams.code as string;
+  let term: string | undefined = (queryParams.term as string) || undefined;
+  let year_standing: string | undefined =
+    (queryParams.year_standing as string) || undefined;
+  let section_type: string | undefined =
+    (queryParams.section_type as string) || undefined;
 
-  const results = searchCourses(db, search, term, year, type);
+  const criteria = {
+    code,
+    term,
+    year_standing,
+    section_type,
+  };
+
+  const results = searchCourses(criteria);
 
   res.send(results);
 });

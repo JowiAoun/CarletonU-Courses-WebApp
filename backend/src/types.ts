@@ -1,4 +1,4 @@
-export type Course = {
+type Course = {
   crn: number; // 31245
   code: string; // COMP 2401 A
   subject: string; // COMP
@@ -11,6 +11,7 @@ export type Course = {
   section_type: string; // IN-PERSON
   building?: string; // Mackenzie Building
   room?: string; // 3380
+  term: string; // Fall 2023
   also_register_in?: string[];
   precludes?: string[]; // ['SYSC 2006']
   prereqs?: string; // (COMP 1006 or COMP 1406 or SYSC 2004) with a minimum grade of C-
@@ -25,3 +26,5 @@ export type Course = {
   restrictions_major?: string[];
   restrictions_program?: string[];
 };
+
+export default Course;
