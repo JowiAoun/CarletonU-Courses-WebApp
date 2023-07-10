@@ -64,7 +64,7 @@ function InsideBackground(){
             <NavBar />
             <main>
                 <FilterProvider>
-                <Outlet />
+                    <Outlet />
                 </FilterProvider>
             </main>
         </div>
