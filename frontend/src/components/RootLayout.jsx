@@ -1,7 +1,5 @@
 import React from "react";
 import {NavLink, Outlet} from "react-router-dom"
-import { FilterProvider } from "./FilterContext";
-
 function ListItem(item) {
     return (
           <li className="nav-item">
@@ -63,9 +61,7 @@ function InsideBackground(){
         <div className='backdrop-blur-sm backdrop-brightness-50'>
             <NavBar />
             <main>
-                <FilterProvider>
                 <Outlet />
-                </FilterProvider>
             </main>
         </div>
     );
