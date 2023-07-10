@@ -5,13 +5,13 @@ import { FilterProvider } from "./FilterContext";
 function ListItem(item) {
     return (
           <li className="nav-item">
-            <div
-            className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-            >
-                <i className="fab fa-facebook-square text-3xl leading-lg text-white opacity-75"></i>
-                <NavLink className="text-xl" to={item.link}>{item.term}</NavLink>
-            </div>
-        </li>
+                <div
+                className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
+                >
+                    <i className="fab fa-facebook-square text-3xl leading-lg text-white opacity-75"></i>
+                    <NavLink className="text-xl" to={item.link}>{item.term}</NavLink>
+                </div>
+            </li>
     );
 }
 function List() {
@@ -64,7 +64,7 @@ function InsideBackground(){
             <NavBar />
             <main>
                 <FilterProvider>
-                <Outlet />
+                    <Outlet />
                 </FilterProvider>
             </main>
         </div>
