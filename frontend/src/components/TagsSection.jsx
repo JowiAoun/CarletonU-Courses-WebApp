@@ -14,11 +14,14 @@ function TextInBubble(bubble) {
 export default function TagsSection(tags) {
   return (
     <>
-    <div className="justify-end flex">
-      <div className="flex">
-        <TextInBubble number={10} text={"Ohio"} />
-        <TextInBubble number={20} text={"New York"} />
-        <TextInBubble number={30} text={"Yes"} />
+    <div className="pt-5 justify-end flex">
+      <div className="justify-end flex flex-wrap">
+        <TextInBubble number={10} text={"Do the Homework"} />
+        <TextInBubble number={20} text={"Lecture Heavy"} />
+        <TextInBubble number={30} text={"Sleep in Class"} />
+        <TextInBubble number={30} text={"Easy concepts"} />
+        <TextInBubble number={30} text={"Memorization"} />
+        <TextInBubble number={30} text={"Should have grade 12 review"} />
       </div>
     </div>
     </>

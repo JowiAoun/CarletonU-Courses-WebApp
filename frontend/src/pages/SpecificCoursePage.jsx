@@ -3,12 +3,6 @@ import "../styles/styles.css";
 import Chart from "../components/Chart";
 import Comments from "../components/Comments";
 import TagsSection from "../components/TagsSection";
-function Title() {
-  <>
-    <h1>MATH1007</h1>
-    <h2>Intro do Calculus I</h2>
-  </>;
-}
 export default function SpecificCoursePage() {
   const Course = {
     fives: 6,
@@ -23,16 +17,18 @@ export default function SpecificCoursePage() {
   };
   return (
     <>
-      <div>
-        <Chart />
-        <div className="">
-          <div className="justify-end flex text-white font-bold">
-            <div>
-              <h1 className="text-4xl">MATH1007</h1>
-              <h1 className="text-2xl">Intro do Calculus I</h1>
+      <div className="flex pt-10">
+        <div className="w-1/2">
+          <Chart />
+        </div>
+        <div className="w-1/2">
+          <div className="pr-72">
+            <div className="justify-end flex text-white font-bold">
+              <div>
+                <h1 className="justify-end flex text-7xl">MATH1007</h1>
+                <h1 className="justify-end flex text-4xl">Introduction to Calculus I</h1>
+              </div>
             </div>
-          </div>
-          <div>
             <TagsSection />
           </div>
         </div>
