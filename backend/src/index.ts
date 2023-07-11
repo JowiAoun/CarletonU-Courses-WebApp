@@ -16,7 +16,7 @@ config(); // Read .env file
 const mongodbURI: string = process.env.MONGODB_URI!;
 
 // --- Database
-const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
+//const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
 
 // --- Middleware
 app.use(cors({ origin: "*" })); // Allow cross-origin requests
@@ -44,6 +44,7 @@ app.get("/settings", (req: Request, res: Response) => {
 });
 
 app.post("/api/search", (req: Request, res: Response) => {
+  res.send("success");
   //TODO: Find a way to not hard-code search settings
   const queryParams = req.query;
 
