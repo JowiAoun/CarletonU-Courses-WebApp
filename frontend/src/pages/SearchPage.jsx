@@ -66,6 +66,7 @@ function submitForm(event) {
       // Handle any errors that occur during the request
       console.error(error);
     });
+    window.location.href = '/courses';
 }
 
 export default function SearchPage() {

@@ -9,6 +9,7 @@ import {
 
 import SearchPage from "./pages/SearchPage"
 import Courses from './pages/CoursesPage'
+import SpecificCoursePage from './pages/SpecificCoursePage'
 import About from "./pages/AboutPage"
 
 //layouts
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route index element={<SearchPage />} />
       <Route path="courses" element={<Courses />} />
       <Route path="about" element={<About />} />
+      <Route path="course" element={<SpecificCoursePage />} />
     </Route>
   )
 )

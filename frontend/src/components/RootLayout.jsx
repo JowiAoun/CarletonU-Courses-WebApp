@@ -28,6 +28,7 @@ function List() {
           <ListItem link="/" term="Search" />
           <ListItem link="/courses" term="Courses" />
           <ListItem link="/about" term="About" />
+          <ListItem link="/course" term="Course" />
         </ul>
       </div>
     </>
