@@ -43,7 +43,7 @@ function Comment(props) {
 
 export default function Comments(props) {
   return (
-    <div>
+    <div className="pt-32">
       <Comment />
     </div>
   );
