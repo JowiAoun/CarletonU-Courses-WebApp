@@ -1,9 +1,10 @@
-import "../styles/styles.css";
+import React from 'react';
+import BarChart from './BarChart';
 
-export default function Chart(props) {
+export default function Chart(){
   return (
     <div className="pl-72">
-      <div className="box-border h-80 w-96 border-4"></div>
+      <BarChart />
     </div>
   );
 }
