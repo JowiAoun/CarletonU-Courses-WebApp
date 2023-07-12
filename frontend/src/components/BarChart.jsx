@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 Chart.defaults.font.size = 30;
 Chart.defaults.color = "white";

@@ -11,7 +11,7 @@ function TextInBubble(bubble) {
     </div>
   );
 }
-export default function TagsSection(tags) {
+export default function TagsSection() {
   return (
     <>
     <div className="pt-5 justify-end flex">

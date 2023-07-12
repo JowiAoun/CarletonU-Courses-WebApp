@@ -3,7 +3,6 @@ import "../styles/styles.css";
 import Chart from "../components/Chart";
 import Comments from "../components/Comments";
 import TagsSection from "../components/TagsSection";
-import BarChart from "../components/BarChart";
 
 export default function SpecificCoursePage() {
   return (

@@ -23,7 +23,7 @@ function TopSection(top) {
   );
 }
 
-function Comment(props) {
+function Comment() {
   return (
     <div className="px-60 py-2">
       <div className="block p-6 bg-white border border-gray-200 rounded-3xl shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -41,7 +41,7 @@ function Comment(props) {
   );
 }
 
-export default function Comments(props) {
+export default function Comments() {
   return (
     <div className="pt-32">
       <Comment />
