@@ -11,6 +11,7 @@ function CheckBox(props) {
             <input
               id={props.idName}
               name={props.idName}
+              value={props.idName}
               type="checkbox"
               className="checkbox opacity-0 absolute cursor-pointer w-full h-full"
             />
@@ -86,9 +87,9 @@ const TermDropdown = () => {
       </div>
       {isList && (
         <div className="w-64 mt-2 p-4 bg-white shadow rounded">
-          <CheckBox choice="Summer" idName="summer" />
-          <CheckBox choice="Fall" idName="fall" />
-          <CheckBox choice="Winter" idName="winter" />
+          <CheckBox choice="Summer" idName="Summer" />
+          <CheckBox choice="Fall" idName="Fall" />
+          <CheckBox choice="Winter" idName="Winter" />
         </div>
       )}
       <style>
@@ -145,10 +146,10 @@ const YearDropdown = () => {
       </div>
       {isList && (
         <div className="w-64 mt-2 p-4 bg-white shadow rounded">
-          <CheckBox choice="1XXX" idName="1XXX" />
-          <CheckBox choice="2XXX" idName="2XXX" />
-          <CheckBox choice="3XXX" idName="3XXX" />
-          <CheckBox choice="4XXX" idName="4XXX" />
+          <CheckBox choice="1XXX" idName="firstYear" />
+          <CheckBox choice="2XXX" idName="secondYear" />
+          <CheckBox choice="3XXX" idName="thirdYear" />
+          <CheckBox choice="4XXX" idName="fourthYear" />
         </div>
       )}
       <style>

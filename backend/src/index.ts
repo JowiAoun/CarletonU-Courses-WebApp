@@ -44,8 +44,22 @@ app.get("/settings", (req: Request, res: Response) => {
 });
 
 app.post("/api/search", (req: Request, res: Response) => {
+  const formData = req.body;
+  const optionSummer = formData.Summer === "Summer";
+  const optionFall = formData.Fall === "Fall";
+  const optionWinter = formData.Winter === "Winter";
+  const optionInPerson = formData.inPerson === "inPerson";
+  const optionOnline = formData.online === "online";
+  const optionFirstYear = formData.firstYear === "firstYear";
+  const optionSecondYear = formData.secondYear === "secondYear";
+  const optionThirdYear = formData.thirdYear === "thirdYear";
+  const optionFourthYear = formData.fourthYear === "fourthYear";
+
+  console.log("Summer: " + optionSummer);
   res.send("success");
+
   //TODO: Find a way to not hard-code search settings
+  /*
   const queryParams = req.query;
 
   let code: string = queryParams.code as string;
@@ -65,6 +79,7 @@ app.post("/api/search", (req: Request, res: Response) => {
   const results = searchCourses(criteria);
 
   res.send(results);
+  */
 });
 
 // --- Expose port

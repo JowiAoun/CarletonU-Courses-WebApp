@@ -31,6 +31,11 @@ function submitForm(event) {
   event.preventDefault(); // Prevent the default form submission behavior
   var form = event.target;
   var formData = new FormData(form);
+  const formDataJSON = {};
+
+  formData.forEach((value, key) => {
+    formDataJSON[key] = value;
+  });
 
   /*
   // Make an API request using fetch or XMLHttpRequest
@@ -50,12 +55,15 @@ function submitForm(event) {
     console.error('Error:', error);
   });
   */
-
   //new version
   // Make an API request using fetch or XMLHttpRequest
+
   fetch("http://localhost:5000/api/search", {
     method: "POST",
-    body: formData,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formDataJSON),
   })
     .then((response) => response.text())
     .then((data) => {
@@ -66,7 +74,7 @@ function submitForm(event) {
       // Handle any errors that occur during the request
       console.error(error);
     });
-    window.location.href = '/courses';
+  //window.location.href = '/courses';
 }
 
 export default function SearchPage() {
