@@ -24,7 +24,7 @@ const CourseSchema = new Schema({
   instructor: [{ type: String }],
   days: [{ type: String, required: true }],
   time: { type: String, required: true },
-  year_standing: { type: Number, required: true },
+  year_standing: { type: String, required: true },
   restriction_year: [{ type: String }],
   restriction_level: [{ type: String }],
   restriction_degree: [{ type: String }],

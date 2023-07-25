@@ -19,7 +19,7 @@ type Course = {
   instructor?: string[]; // ['Christine Laurendeau', 'rmplink.com/instructor']
   days: string[]; // ['Tue', 'Thu']
   time: string; // 10:05 - 11:25
-  year_standing: number; // 2
+  year_standing: string; // 2
   restrictions_year?: string[];
   restrictions_level?: string[];
   restrictions_degree?: string[];
@@ -28,4 +28,3 @@ type Course = {
 };
 
 export default Course;
-//! hello

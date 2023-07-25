@@ -56,8 +56,45 @@ function SearchBarAndButton(){
         </div>
       </FilterProvider>
     </div>
+<<<<<<< Updated upstream
   )
+=======
+  );
 }
+
+function submitForm(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+  const form = event.target;
+  const formData = new FormData(form);
+  const formDataJSON = {};
+
+  formData.forEach((value, key) => {
+    formDataJSON[key] = value;
+  });
+
+  console.log("Form Data JSON:", formDataJSON); //!test
+
+  // Make the API request using fetch or XMLHttpRequest
+  fetch("http://localhost:5000/api/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formDataJSON),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // Access the response data here
+      console.log("API Response:", data); //!test
+    })
+    .catch((error) => {
+      // Handle any errors that occur during the request
+      console.error(error);
+    });
+>>>>>>> Stashed changes
+}
+
+
 
 export default function SearchPage() {
   return (

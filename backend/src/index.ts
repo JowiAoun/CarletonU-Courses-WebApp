@@ -3,20 +3,27 @@
 import cors from "cors";
 import { config } from "dotenv";
 import express, { Request, Response } from "express";
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 // Files
 import { searchCourses } from "./functions";
-import Course from "./types";
+
+// --- Config
+config(); // Read .env file
+
+// --- Constants
+const PORT = 5000; // Port for server
+const MONGODB_URI: string = process.env.MONGODB_URI!; // Get URI from .env file
+
 
 // --- App
 const app = express(); // Create app object
-config(); // Read .env file
-
-// Constants
-const mongodbURI: string = process.env.MONGODB_URI!;
 
 // --- Database
+<<<<<<< Updated upstream
 const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
+=======
+mongoose.connect(MONGODB_URI); // Connect to MongoDB
+>>>>>>> Stashed changes
 
 // --- Middleware
 app.use(cors({ origin: "*" })); // Allow cross-origin requests
@@ -43,6 +50,7 @@ app.get("/settings", (req: Request, res: Response) => {
   res.send("Settings page!");
 });
 
+<<<<<<< Updated upstream
 app.post("/api/search", (req: Request, res: Response) => {
   //TODO: Find a way to not hard-code search settings
   const queryParams = req.query;
@@ -64,7 +72,18 @@ app.post("/api/search", (req: Request, res: Response) => {
   const results = searchCourses(criteria);
 
   res.send(results);
+=======
+app.post("/api/search", async (req: Request, res: Response) => {
+  try {
+    const formData = req.body;
+    const result = await searchCourses(formData);
+    res.send(JSON.stringify(result));
+  } catch (error) {
+    console.error("Error searching courses:", error);
+    res.status(500).send("Error searching courses.");
+  }
+>>>>>>> Stashed changes
 });
 
 // --- Expose port
-app.listen(5000);
+app.listen(PORT); // Listen on port 5000 for requests
