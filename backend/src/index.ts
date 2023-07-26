@@ -113,8 +113,7 @@ async function startServer() {
       }
 
       const results = await CourseModel.find(filter).exec();
-      await delay(1000);
-      console.log(results);
+      //console.log(results);
 
       res.json(results); // Sending the results as JSON to the frontend
     } catch (error) {
