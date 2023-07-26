@@ -17,8 +17,7 @@ async function startServer() {
   config(); // Read .env file
 
   // Constants
-  const mongodbURI: string =
-    "mongodb+srv://john:GfiVuSAEzej6LY3e@cluster0.juovemx.mongodb.net/carletonu-registration-webapp";
+  const mongodbURI: string = process.env.MONGODB_URI!;
 
   // --- Database
   const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
