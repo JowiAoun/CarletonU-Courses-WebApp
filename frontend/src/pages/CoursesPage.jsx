@@ -1,34 +1,43 @@
 import "../styles/styles.css";
 
 import CourseCard from "../components/CourseCard";
+import React, { useContext, useEffect, useState } from "react";
+import { CoursesContext } from "../components/CoursesContext";
 
-export default function Courses() {
-  const Courses = [
-    {
-      code: "MATH1007",
-      name: "Introduction to Calculus",
-      definition:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a ultricies est, et malesuada leo. Maecenas feugiat lectus dui. Sed pretium magna in libero pharetra vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at maximus ante, at dignissim erat. Aliquam fermentum semper tortor, ut faucibus augue dapibus sit amet. Nullam accumsan urna et posuere tempor. Pellentesque varius facilisis tempor. Curabitur rhoncus luctus fringilla.",
-    },
-    {
-      code: "COMP1405",
-      name: "Introduction to Computer Science I",
-      definition:
-        "Phasellus accumsan felis eu justo tristique, et efficitur libero laoreet. Nam tincidunt mi ligula, vitae gravida lacus ullamcorper eget. Nunc maximus dictum ex, id vestibulum massa malesuada id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id venenatis erat. Quisque sed tincidunt sapien. Integer at varius mi. Sed faucibus sapien vel tellus scelerisque scelerisque. Suspendisse potenti. Nam commodo nisi urna. Donec tempor malesuada libero, sed tincidunt eros sodales id.",
-    },
-  ];
+const CoursesPage = () => {
+  const { courses } = useContext(CoursesContext);
+  
   return (
-    <>
-      <div className="w-full pt-20 px-96">
+    <div className="w-full pt-20 px-96">
+      {courses.map((course) => (
+        <CourseCard
+          code={course.code}
+          name={"will fill in later"}
+          definition={"will fill in later"}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default CoursesPage;
+/*
+code: "yolo"
+section_type: "inPerson"
+term: "Fall"
+year_standing: "firstYear"
+_id: "64c0a4aec251b6a3b46ea071"
+ */
+/*
+<li key={course._id}>
+          {course.code} - {course.term}
+        </li>
         {Courses.map((data) => (
           // eslint-disable-next-line react/jsx-key
           <CourseCard
             code={data.code}
-            name={data.name}
-            definition={data.definition}
+            name={"will fill in later"}
+            definition={"will fill in later"}
           />
         ))}
-      </div>
-    </>
-  );
-}
+        */

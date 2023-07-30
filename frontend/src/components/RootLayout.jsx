@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { FilterProvider } from "./FilterContext";
+import { CoursesProvider } from "./CoursesContext";
 
 function ListItem(item) {
   return (
@@ -63,19 +63,19 @@ export default function RootLayout() {
     "https://around.uoregon.edu/sites/default/files/styles/landscape_xl/public/field/image/lecture_hall-shutterstock.jpg?itok=9flpJ22p";
   return (
     <div className="flex justify-center items-center h-screen">
-      <div
-        className="bg-cover bg-center h-full w-full"
-        style={{ backgroundImage: `url(${backgroundImageURL})` }}
-      >
-        <div className="backdrop-blur-sm backdrop-brightness-50">
-          <NavBar />
-          <main>
-            <FilterProvider>
+      <CoursesProvider>
+        <div
+          className="bg-cover bg-center h-full w-full"
+          style={{ backgroundImage: `url(${backgroundImageURL})` }}
+        >
+          <div className="backdrop-blur-sm backdrop-brightness-50">
+            <NavBar />
+            <main>
               <Outlet />
-            </FilterProvider>
-          </main>
+            </main>
+          </div>
         </div>
-      </div>
+      </CoursesProvider>
     </div>
   );
 }
