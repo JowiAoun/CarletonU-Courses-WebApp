@@ -1,5 +1,8 @@
 import "../styles/styles.css";
 import Filters from "../components/Filters";
+import { useContext, useEffect } from "react";
+import { CoursesContext, CoursesProvider } from "../components/CoursesContext";
+import { useNavigate } from "react-router";
 
 function Title() {
   return (
@@ -27,67 +30,61 @@ function SearchBarAndButton() {
   );
 }
 
-function submitForm(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
-  var form = event.target;
-  var formData = new FormData(form);
-  const formDataJSON = {};
-
-  formData.forEach((value, key) => {
-    formDataJSON[key] = value;
-  });
-
-  /*
-  // Make an API request using fetch or XMLHttpRequest
-  fetch('http://localhost:5000/api/search', {
-    method: 'POST',
-    body: formData
-  })
-  .then(function(response) {
-    // Handle the API response
-    // Redirect the user to a different page
-    console.log(response);
-    //window.location.href = '/courses';
-    console.log(response);
-  })
-  .catch(function(error) {
-    // Handle any errors
-    console.error('Error:', error);
-  });
-  */
-  //new version
-  // Make an API request using fetch or XMLHttpRequest
-
-  fetch("http://localhost:5000/api/search", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formDataJSON),
-  })
-    .then((response) => response.text())
-    .then((data) => {
-      // Access the response data here
-      console.log(data); // "success"
-    })
-    .catch((error) => {
-      // Handle any errors that occur during the request
-      console.error(error);
-    });
-  //window.location.href = '/courses';
-}
-
 export default function SearchPage() {
+  const { courses, setCourses } = useContext(CoursesContext);
+  const navigate = useNavigate(); // Initialize useHistory
+
+  function submitForm(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    var form = event.target;
+    var formData = new FormData(form);
+    const formDataJSON = {};
+    var parsedData;
+
+    formData.forEach((value, key) => {
+      formDataJSON[key] = value;
+    });
+
+    //new version
+    // Make an API request using fetch or XMLHttpRequest
+
+    fetch("http://localhost:5000/api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formDataJSON),
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        // Access the response data here
+        //console.log(data);
+        parsedData = JSON.parse(data);
+        setCourses(parsedData);
+        navigate("/courses");
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the request
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    console.log(courses); // Log the updated courses state whenever it changes
+  }, [courses]); // The useEffect hook will re-run whenever "courses" state changes
+
   return (
     <div>
-      <form
-        className="flex flex-col items-center pt-60 min-h-screen"
-        onSubmit={submitForm}
-      >
-        <Title />
-        <SearchBarAndButton />
-        <Filters />
-      </form>
+      <CoursesProvider>
+        <form
+          className="flex flex-col items-center pt-60 min-h-screen"
+          onSubmit={submitForm}
+        >
+          <Title />
+          <SearchBarAndButton />
+          <Filters />
+        </form>
+      </CoursesProvider>
     </div>
   );
 }

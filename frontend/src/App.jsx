@@ -1,19 +1,22 @@
-import './styles/styles.css'
+import "./styles/styles.css";
 
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import SearchPage from "./pages/SearchPage"
-import Courses from './pages/CoursesPage'
-import SpecificCoursePage from './pages/SpecificCoursePage'
-import About from "./pages/AboutPage"
+import SearchPage from "./pages/SearchPage";
+import Courses from "./pages/CoursesPage";
+import SpecificCoursePage from "./pages/SpecificCoursePage";
+import About from "./pages/AboutPage";
 
 //layouts
-import RootLayout from './components/RootLayout';
+import RootLayout from "./components/RootLayout";
+import { CoursesProvider } from "./components/CoursesContext";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,14 +25,18 @@ const router = createBrowserRouter(
       <Route path="courses" element={<Courses />} />
       <Route path="about" element={<About />} />
       <Route path="course" element={<SpecificCoursePage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegistrationPage />} />
     </Route>
   )
-)
+);
 
 export default function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <CoursesProvider>
+        <RouterProvider router={router} />
+      </CoursesProvider>
     </>
-  )
+  );
 }
