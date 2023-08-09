@@ -79,7 +79,7 @@ async function startServer() {
       if (selectedTerms.length > 0) {
         filter.term = { $in: selectedTerms };
       }
-      
+
       // Create an array to store selected terms
       const selectedSectionType = [];
       if (searchOptions.optionOnline) {
@@ -88,13 +88,12 @@ async function startServer() {
       if (searchOptions.optionInPerson) {
         selectedSectionType.push("inPerson");
       }
-     
+
       // Use $in operator to match documents with any of the selected terms
       if (selectedSectionType.length > 0) {
         filter.section_type = { $in: selectedSectionType };
       }
 
-      
       const selectedYears = [];
       if (searchOptions.optionFirstYear) {
         selectedYears.push("firstYear");
@@ -111,12 +110,11 @@ async function startServer() {
       if (selectedYears.length > 0) {
         filter.year_standing = { $in: selectedYears };
       }
-      
 
-      const results = CourseModel.find(filter).exec();
-      await delay(2000);
-      console.log(results);
-      res.json(results);
+      const results = await CourseModel.find(filter).exec();
+      //console.log(results);
+
+      res.json(results); // Sending the results as JSON to the frontend
     } catch (error) {
       console.error("Error searching courses:", error);
       res
