@@ -15,6 +15,8 @@ import About from "./pages/AboutPage";
 //layouts
 import RootLayout from "./components/RootLayout";
 import { CoursesProvider } from "./components/CoursesContext";
+import LoginPage from "./pages/LoginPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +25,8 @@ const router = createBrowserRouter(
       <Route path="courses" element={<Courses />} />
       <Route path="about" element={<About />} />
       <Route path="course" element={<SpecificCoursePage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegistrationPage />} />
     </Route>
   )
 );

@@ -71,11 +71,6 @@ export default function SearchPage() {
 
   useEffect(() => {
     console.log(courses); // Log the updated courses state whenever it changes
-    /*
-    if (courses.length > 0) {
-      window.location.href = "/courses";
-    }
-    */
   }, [courses]); // The useEffect hook will re-run whenever "courses" state changes
 
   return (
