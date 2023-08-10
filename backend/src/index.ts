@@ -4,8 +4,10 @@ import cors from "cors";
 import { config } from "dotenv";
 import express, { Request, Response } from "express";
 import mongoose, { Mongoose } from "mongoose";
+import { graphqlHTTP } from 'express-graphql'
 // Files
 import { searchCourses } from "./functions";
+import { schema, root } from "./graphql";
 
 // --- Config
 config(); // Read .env file
@@ -23,6 +25,13 @@ mongoose.connect(MONGODB_URI); // Connect to MongoDB cluster
 // --- Middleware
 app.use(cors({ origin: "*" })); // Allow cross-origin requests
 app.use(express.json()); // Parse JSON from requests
+
+// --- GraphQL
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
 
 // --- Endpoints
 app.get("/", (req: Request, res: Response) => {

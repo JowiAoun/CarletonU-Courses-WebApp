@@ -1,4 +1,4 @@
-type Course = {
+type CourseActive = {
   crn: number,
   code: string,
   term_code: string,
@@ -33,4 +33,4 @@ type Instructor = {
   num_ratings: number,
 };
 
-export default Course;
+export default CourseActive;

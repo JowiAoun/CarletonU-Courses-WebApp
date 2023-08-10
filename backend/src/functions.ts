@@ -1,5 +1,5 @@
-import CourseModel from "./models/CourseModel";
-import Course from "./types";
+import CourseActiveModel from "./models/CourseActiveModel";
+import CourseActive from "./types";
 
 //{ optionSummer: formData.Summer === "Summer" },
 //{ optionFall: formData.Fall === "Fall" },
@@ -11,7 +11,7 @@ import Course from "./types";
 //{ optionThirdYear: formData.thirdYear === "thirdYear" },
 //{ optionFourthYear: formData.fourthYear === "fourthYear" },
 
-export async function searchCourses(formData: any): Promise<Course[]> {
+export async function searchCourses(formData: any): Promise<CourseActive[]> {
   const yearStandingOptions = [
     "firstYear",
     "secondYear",
@@ -55,7 +55,7 @@ export async function searchCourses(formData: any): Promise<Course[]> {
   console.log("Generated MongoDB query:", JSON.stringify(criteria, null, 2)); //!test
 
   try {
-    const result = await CourseModel.find(criteria).lean().exec();
+    const result = await CourseActiveModel.find(criteria).lean().exec();
     return result;
   } catch (error) {
     console.error("Error searching courses:", error);
@@ -64,9 +64,9 @@ export async function searchCourses(formData: any): Promise<Course[]> {
 }
 
 // Find a specific course by title
-export async function findCourseByTitle(title: string): Promise<Course | null> {
+export async function findCourseByTitle(title: string): Promise<CourseActive | null> {
   try {
-    const course = await CourseModel.findOne({ title }).lean().exec();
+    const course = await CourseActiveModel.findOne({ title }).lean().exec();
     return course;
   } catch (error) {
     console.error("Error finding course:", error);
