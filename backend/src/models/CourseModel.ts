@@ -10,7 +10,7 @@ const CourseSchema = new Schema({
   description: { type: String },
   includes: { type: String },
   precludes: { type: String },
-  prerequisites: { type: String },
+  prereqs: { type: String },
   schedule_general: { type: String },
 });
 

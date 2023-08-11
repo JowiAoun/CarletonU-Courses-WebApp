@@ -5,7 +5,7 @@ export type Course = {
   description?: string,
   includes?: string,
   precludes?: string,
-  prerequisites?: string,
+  prereqs?: string,
   schedule_general?: string,
 }
 

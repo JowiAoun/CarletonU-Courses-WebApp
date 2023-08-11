@@ -18,7 +18,7 @@ export const schema = buildSchema(`
     description: String
     includes: String
     precludes: String
-    prerequisites: String
+    prereqs: String
     schedule_general: String
   }
 
