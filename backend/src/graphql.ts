@@ -29,7 +29,7 @@ export const schema = buildSchema(`
     full_session_info: String
     has_prereqs: Int
     has_restrictions: Int
-    instructor: Instructor
+    instructor: String
     meeting_date: String
     days: [String]
     time_start: String
@@ -37,13 +37,6 @@ export const schema = buildSchema(`
     building: String
     room: String
     saved_on: Int
-  }
-
-  type Instructor {
-    name: String
-    link: String
-    rating: Float
-    num_ratings: Int
   }
 
   type Query {

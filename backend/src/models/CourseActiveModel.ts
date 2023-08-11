@@ -1,5 +1,5 @@
 import { Document, Schema, model } from "mongoose";
-import CourseActive from "../types";
+import { CourseActive } from "../types";
 
 interface CourseActiveDocument extends CourseActive, Document {}
 
@@ -21,12 +21,7 @@ const CourseActiveSchema = new Schema({
   full_session_info: { type: String },
   has_prereqs: { type: Number, required: true },
   has_restrictions: { type: Number, required: true },
-  instructor: {
-    name: { type: String },
-    link: { type: String },
-    rating: { type: Number },
-    num_ratings: { type: Number },
-  },
+  instructor: { type: String },
   meeting_date: { type: String },
   days: { type: [String] },
   time_start: { type: String },

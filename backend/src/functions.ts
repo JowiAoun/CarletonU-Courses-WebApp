@@ -1,15 +1,6 @@
+import CourseModel from "./models/CourseModel";
 import CourseActiveModel from "./models/CourseActiveModel";
-import CourseActive from "./types";
-
-//{ optionSummer: formData.Summer === "Summer" },
-//{ optionFall: formData.Fall === "Fall" },
-//{ optionWinter: formData.Winter === "Winter" },
-//{ optionInPerson: formData.inPerson === "inPerson" },
-//{ optionOnline: formData.online === "online" },
-//{ optionFirstYear: formData.firstYear === "firstYear" },
-//{ optionSecondYear: formData.secondYear === "secondYear" },
-//{ optionThirdYear: formData.thirdYear === "thirdYear" },
-//{ optionFourthYear: formData.fourthYear === "fourthYear" },
+import { Course, CourseActive } from "./types";
 
 export async function searchCourses(formData: any): Promise<CourseActive[]> {
   const yearStandingOptions = [
@@ -64,7 +55,9 @@ export async function searchCourses(formData: any): Promise<CourseActive[]> {
 }
 
 // Find a specific course by title
-export async function findCourseByTitle(title: string): Promise<CourseActive | null> {
+export async function findCourseByTitle(
+  title: string
+): Promise<CourseActive | null> {
   try {
     const course = await CourseActiveModel.findOne({ title }).lean().exec();
     return course;

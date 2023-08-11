@@ -1,4 +1,15 @@
-type CourseActive = {
+export type Course = {
+  code: string,
+  credits: number,
+  ltitle: string,
+  description?: string,
+  includes?: string,
+  precludes?: string,
+  prerequisites?: string,
+  schedule_general?: string,
+}
+
+export type CourseActive = {
   crn: number,
   code: string,
   term_code: string,
@@ -16,7 +27,7 @@ type CourseActive = {
   full_session_info?: string,
   has_prereqs: number,
   has_restrictions: number,
-  instructor?: Instructor,
+  instructor?: string,
   meeting_date?: string,
   days?: string[],
   time_start?: string,
@@ -25,12 +36,3 @@ type CourseActive = {
   room?: string,
   saved_on: number
 };
-
-type Instructor = {
-  name: string,
-  link: string,
-  rating: number,
-  num_ratings: number,
-};
-
-export default CourseActive;
