@@ -1,16 +1,27 @@
-import { buildSchema } from 'graphql';
-import { searchCourses, findCourseByTitle } from './functions';
+import { buildSchema } from "graphql";
+import { searchCourses, findCourseByTitle } from "./functions";
 
 export const root = {
-    courses: async ({criteria}: {criteria: any}) => {
-      return await searchCourses(criteria);
-    },
-    courseByTitle: async ({title}: {title: string}) => {
-      return await findCourseByTitle(title);
-    }
-  };
+  courses: async ({ criteria }: { criteria: any }) => {
+    return await searchCourses(criteria);
+  },
+  courseByTitle: async ({ title }: { title: string }) => {
+    return await findCourseByTitle(title);
+  },
+};
 
 export const schema = buildSchema(`
+  type Course {
+    code: String
+    credits: Int
+    ltitle: String
+    description: String
+    includes: String
+    precludes: String
+    prerequisites: String
+    schedule_general: String
+  }
+
   type CourseActive {
     crn: Int
     code: String
@@ -50,4 +61,5 @@ export const schema = buildSchema(`
     year_standing: String
     section_type: String
   }
+
 `);
