@@ -21,7 +21,12 @@ async function startServer() {
   const mongodbURI: string = process.env.MONGODB_URI!;
 
   // --- Database
-  const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
+  try {
+    const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
+    console.log("connected");
+  } catch (error) {
+    console.log("bruh moment");
+  }
 
   // --- Middleware
   app.use(cors({ origin: "*" })); // Allow cross-origin requests
@@ -116,8 +121,9 @@ async function startServer() {
         filter.year_standing = { $in: selectedYears };
       }
 
-      const results = await CourseModel.find(filter).exec();
-      //console.log(results);
+      //const results = await CourseModel.find(filter).exec();
+      const results = await CourseModel.find();
+      console.log(results);
 
       res.json(results); // Sending the results as JSON to the frontend
     } catch (error) {

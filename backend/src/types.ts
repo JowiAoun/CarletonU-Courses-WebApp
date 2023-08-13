@@ -6,4 +6,15 @@ type Course = {
 };
 
 export default Course;
-//! hello
+
+/*
+type Course = {
+  code: string; //COMP1406 A
+  credits: number;
+  description: string;
+  level: string;
+  precludes: string;
+  prereqs: string;
+  schedule_general: string;
+};
+*/
