@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { CoursesProvider } from "./CoursesContext";
+import { AccountProvider } from "./AccountContext";
 
 function ListItem(item) {
   return (
@@ -65,17 +66,19 @@ export default function RootLayout() {
   return (
     <div className="flex justify-center items-center h-screen">
       <CoursesProvider>
-        <div
-          className="bg-cover bg-center h-full w-full"
-          style={{ backgroundImage: `url(${backgroundImageURL})` }}
-        >
-          <div className="backdrop-blur-sm backdrop-brightness-50">
-            <NavBar />
-            <main>
-              <Outlet />
-            </main>
+        <AccountProvider>
+          <div
+            className="bg-cover bg-center h-full w-full"
+            style={{ backgroundImage: `url(${backgroundImageURL})` }}
+          >
+            <div className="backdrop-blur-sm backdrop-brightness-50">
+              <NavBar />
+              <main>
+                <Outlet />
+              </main>
+            </div>
           </div>
-        </div>
+        </AccountProvider>
       </CoursesProvider>
     </div>
   );
