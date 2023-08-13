@@ -12,28 +12,31 @@ export default function LoginPage() {
     var form = event.target;
     var formData = new FormData(form);
     const formDataJSON = {};
-    var parsedData;
+    var parsedData = "hi";
 
     formData.forEach((value, key) => {
       formDataJSON[key] = value;
     });
-
     //new version
     // Make an API request using fetch or XMLHttpRequest
 
     fetch("http://localhost:5000/api/login", {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formDataJSON),
     })
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((data) => {
         // Access the response data here
         //console.log(data);
-        parsedData = JSON.parse(data);
-        setAccount(parsedData);
+        //parsedData = JSON.parse(data);
+        const { token } = data;
+
+        // Set the cookie with the token
+        document.cookie = `authToken=${token}; path=/; secure; sameSite=strict`;
+        console.log(document.cookie);
         navigate("/");
       })
       .catch((error) => {

@@ -4,6 +4,7 @@ import cors from "cors";
 import { config } from "dotenv";
 import express, { Request, Response } from "express";
 import mongoose, { Mongoose } from "mongoose";
+import jwt from "jsonwebtoken";
 // Files
 import { searchCourses } from "./functions";
 import Course from "./types";
@@ -35,8 +36,12 @@ async function startServer() {
     res.send("Signup page!");
   });
 
-  app.get("/login", (req: Request, res: Response) => {
-    res.send("Login page!");
+  app.post("/api/login", async (req: Request, res: Response) => {
+    const formData = req.body;
+    const userName = formData.userName;
+    const password = formData.password;
+    const token = jwt.sign({ userName }, "secret-key", { expiresIn: "1h" });
+    res.json({ token });
   });
 
   app.get("/home", (req: Request, res: Response) => {
