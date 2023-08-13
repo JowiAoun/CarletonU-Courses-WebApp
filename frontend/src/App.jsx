@@ -17,6 +17,7 @@ import RootLayout from "./components/RootLayout";
 import { CoursesProvider } from "./components/CoursesContext";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import { AccountProvider } from "./components/AccountContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,7 +36,9 @@ export default function App() {
   return (
     <>
       <CoursesProvider>
-        <RouterProvider router={router} />
+        <AccountProvider>
+          <RouterProvider router={router} />
+        </AccountProvider>
       </CoursesProvider>
     </>
   );

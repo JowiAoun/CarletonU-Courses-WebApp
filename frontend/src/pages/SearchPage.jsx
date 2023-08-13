@@ -1,8 +1,8 @@
 import "../styles/styles.css";
-import Filters from "../components/Filters";
 import { useContext, useEffect } from "react";
 import { CoursesContext, CoursesProvider } from "../components/CoursesContext";
 import { useNavigate } from "react-router";
+import Filters from "../components/Filters";
 
 function Title() {
   return (
