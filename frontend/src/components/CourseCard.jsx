@@ -8,10 +8,13 @@ export default function CourseCard(props) {
           {props.code}
         </h5>
         <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white">
-          {props.name}
+          {props.level}
+        </h5>
+        <h5 className="mb-2 text-md font-bold tracking-tight text-gray-900 dark:text-white">
+          {props.prereqs}
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400">
-          {props.definition}
+          {props.description}
         </p>
       </a>
     </div>
