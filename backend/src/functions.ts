@@ -2,7 +2,34 @@ import CourseModel from "./models/CourseModel";
 import CourseActiveModel from "./models/CourseActiveModel";
 import { Course, CourseActive } from "./types";
 
-export async function searchCourses(formData: any): Promise<CourseActive[]> {
+export async function findCoursesByCode(code: any): Promise<Course[]> {
+  //TODO: Change query type to graphql query type defined in schema
+  try {
+    const result = await CourseModel.find({ code: code["code"] })
+      .lean()
+      .exec();
+    return result;
+  } catch (error) {
+    console.error("Error finding courses:", error);
+    throw new Error("Error finding courses.");
+  }
+}
+
+export async function findCourseByTitle(title: any): Promise<Course | null> {
+  //TODO: Make this function similar to findCoursesByCode
+  try {
+    const course = await CourseModel.findOne({ ltitle: title["ltitle"] }).lean().exec();
+    return course;
+  } catch (error) {
+    console.error("Error finding course:", error);
+    throw new Error("Error finding course.");
+  }
+}
+
+export async function DEPRECATEDsearchCourses(
+  formData: any
+): Promise<Course[]> {
+  console.log("formData: ", formData);
   const yearStandingOptions = [
     "firstYear",
     "secondYear",
@@ -43,26 +70,11 @@ export async function searchCourses(formData: any): Promise<CourseActive[]> {
     ],
   };
 
-  console.log("Generated MongoDB query:", JSON.stringify(criteria, null, 2)); //!test
-
   try {
-    const result = await CourseActiveModel.find(criteria).lean().exec();
+    const result = await CourseModel.find(criteria).lean().exec();
     return result;
   } catch (error) {
     console.error("Error searching courses:", error);
     throw new Error("Error searching courses.");
-  }
-}
-
-// Find a specific course by title
-export async function findCourseByTitle(
-  title: string
-): Promise<CourseActive | null> {
-  try {
-    const course = await CourseActiveModel.findOne({ title }).lean().exec();
-    return course;
-  } catch (error) {
-    console.error("Error finding course:", error);
-    throw new Error("Error finding course.");
   }
 }
