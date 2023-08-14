@@ -12,8 +12,9 @@ const CoursesPage = () => {
       {courses.map((course) => (
         <CourseCard
           code={course.code}
-          name={"will fill in later"}
-          definition={"will fill in later"}
+          level={course.level}
+          prereqs={course.prereqs}
+          description={course.description}
         />
       ))}
     </div>

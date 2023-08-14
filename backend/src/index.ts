@@ -4,6 +4,7 @@ import cors from "cors";
 import { config } from "dotenv";
 import express, { Request, Response } from "express";
 import mongoose, { Mongoose } from "mongoose";
+import jwt from "jsonwebtoken";
 // Files
 import { searchCourses } from "./functions";
 import Course from "./types";
@@ -20,7 +21,12 @@ async function startServer() {
   const mongodbURI: string = process.env.MONGODB_URI!;
 
   // --- Database
-  const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
+  try {
+    const db: Mongoose = await mongoose.connect(mongodbURI); // Connect to MongoDB cluster
+    console.log("connected");
+  } catch (error) {
+    console.log("bruh moment");
+  }
 
   // --- Middleware
   app.use(cors({ origin: "*" })); // Allow cross-origin requests
@@ -35,8 +41,12 @@ async function startServer() {
     res.send("Signup page!");
   });
 
-  app.get("/login", (req: Request, res: Response) => {
-    res.send("Login page!");
+  app.post("/api/login", async (req: Request, res: Response) => {
+    const formData = req.body;
+    const userName = formData.userName;
+    const password = formData.password;
+    const token = jwt.sign({ userName }, "secret-key", { expiresIn: "1h" });
+    res.json({ token });
   });
 
   app.get("/home", (req: Request, res: Response) => {
@@ -111,8 +121,9 @@ async function startServer() {
         filter.year_standing = { $in: selectedYears };
       }
 
-      const results = await CourseModel.find(filter).exec();
-      //console.log(results);
+      //const results = await CourseModel.find(filter).exec();
+      const results = await CourseModel.find();
+      console.log(results);
 
       res.json(results); // Sending the results as JSON to the frontend
     } catch (error) {
