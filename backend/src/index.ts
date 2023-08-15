@@ -14,7 +14,7 @@ config(); // Read .env file
 
 // --- Constants
 const PORT = 5000; // Port for server
-const MONGODB_URI: string = "mongodb+srv://john:sXa90mZwJlIZUBgZ@cluster0.2j70mpi.mongodb.net/"; // Get URI from .env file
+const MONGODB_URI: string = process.env.MONGODB_URI!; // Get URI from .env file
 
 // --- App
 const app = express(); // Create app object
