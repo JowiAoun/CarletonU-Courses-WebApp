@@ -1,26 +1,19 @@
 import { Document, Schema, model } from "mongoose";
-import Course from "../types";
+import { Course } from "../types";
 
 interface CourseDocument extends Course, Document {}
 
 const CourseSchema = new Schema({
   code: { type: String, required: true },
   credits: { type: Number, required: true },
-  description: { type: String, required: true },
-  level: { type: String, required: true },
-  precludes: { type: String, required: true },
-  prereqs: { type: String, required: true },
-  schedule_general: { type: String, required: true },
+  ltitle: { type: String, required: true },
+  description: { type: String },
+  includes: { type: String },
+  precludes: { type: String },
+  prereqs: { type: String },
+  schedule_general: { type: String },
 });
 
-const CourseModel = model<CourseDocument>("COMP", CourseSchema);
+const CourseModel = model<CourseDocument>("carletonu-courses", CourseSchema);
 
 export default CourseModel;
-/*
-const CourseSchema = new Schema({
-  code: { type: String, required: true },
-  section_type: { type: String, required: true },
-  term: { type: String, required: true},
-  year_standing: { type: String, required: true },code: { type: String, required: true },
-});
-*/
