@@ -28,8 +28,7 @@ app.use(express.json()); // Parse JSON from requests
 // --- GraphQL endpoint
 app.use('/graphql', graphqlHTTP({
   schema: schema,
-  rootValue: root,
-  graphiql: true, //TODO: See if this needs to be turned off
+  rootValue: root
 }));
 
 // --- Expose port
