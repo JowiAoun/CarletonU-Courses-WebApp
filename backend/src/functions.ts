@@ -3,11 +3,9 @@ import CourseActiveModel from "./models/CourseActiveModel";
 import { Course, CourseActive } from "./types";
 
 export async function findCoursesByCode(code: any): Promise<Course[]> {
-  //TODO: Change query type to graphql query type defined in schema
   try {
-    const result = await CourseModel.find({ code: code["code"] })
-      .lean()
-      .exec();
+    let text = code["code"];
+    const result = await CourseModel.find({ code: text }).lean().exec();
     return result;
   } catch (error) {
     console.error("Error finding courses:", error);
@@ -15,10 +13,12 @@ export async function findCoursesByCode(code: any): Promise<Course[]> {
   }
 }
 
-export async function findCourseByTitle(title: any): Promise<Course | null> {
+export async function findCourseByTitle(title: any): Promise<Course | null> { 
   //TODO: Make this function similar to findCoursesByCode
   try {
-    const course = await CourseModel.findOne({ ltitle: title["ltitle"] }).lean().exec();
+    const course = await CourseModel.findOne({ ltitle: title["ltitle"] })
+      .lean()
+      .exec();
     return course;
   } catch (error) {
     console.error("Error finding course:", error);

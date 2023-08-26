@@ -7,6 +7,7 @@ import mongoose, { Mongoose } from "mongoose";
 import graphqlHTTP from 'express-graphql'
 // Files
 import { schema, root } from "./graphql";
+import CourseModel from "./models/CourseModel"; //! test
 
 // --- Config
 config(); // Read .env file
@@ -30,6 +31,14 @@ app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root
 }));
+
+app.get('/test', async (req, res) => {
+    // Retrieve the first document from the Course collection
+    const firstCourse = await CourseModel.findOne().lean().exec();
+    // Log the retrieved document
+    console.log("First Course:", firstCourse);
+    res.send("Done")
+})
 
 // --- Expose port
 app.listen(PORT); // Listen on port 5000 for requests

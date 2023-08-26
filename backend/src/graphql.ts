@@ -13,13 +13,15 @@ export const root = {
 export const schema = buildSchema(`
   type Course {
     code: String
+    subject: String
     credits: Float
     ltitle: String
-    description: String
     level: String
+    description: String
     precludes: String
     prereqs: String
     schedule_general: String
+    also_listed_as: String
     reviews: [Review]
   }
 

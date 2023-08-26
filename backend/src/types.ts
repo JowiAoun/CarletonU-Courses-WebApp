@@ -1,12 +1,14 @@
 export type Course = {
   code: string;
+  subject: string;
   credits: number;
   ltitle: string;
+  level: string;
   description?: string;
-  includes?: string;
   precludes?: string;
   prereqs?: string;
   schedule_general?: string;
+  also_listed_as?: string;
   reviews: Review[];
 };
 

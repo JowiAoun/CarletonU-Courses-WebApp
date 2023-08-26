@@ -31,6 +31,6 @@ const CourseActiveSchema = new Schema({
   saved_on: { type: Number, required: true },
 });
 
-const CourseActiveModel = model<CourseActiveDocument>("carletonu-courses", CourseActiveSchema);
+const CourseActiveModel = model<CourseActiveDocument>("CourseActive", CourseActiveSchema);
 
 export default CourseActiveModel;
