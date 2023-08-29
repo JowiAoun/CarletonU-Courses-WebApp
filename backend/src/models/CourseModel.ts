@@ -1,10 +1,9 @@
-import { Document, Schema, model } from "mongoose";
+import { Document, Model, Schema, model } from "mongoose";
 import { Course } from "../types";
 
 interface CourseDocument extends Course, Document {}
 
 const CourseSchema = new Schema({
-  //! 1. Make changes on Webapp: "changes: added subject line 2, added also_listed_as to class Course"
   code: { type: String, required: true },
   subject: { type: String, required: true },
   credits: { type: Number, required: true },
@@ -28,6 +27,8 @@ const CourseSchema = new Schema({
   },
 });
 
-const CourseModel = model<CourseDocument>("COMP", CourseSchema);
+const getCourseModel = (term_code: string) => {
+  return model<CourseDocument>("courses-" + term_code, CourseSchema);
+};
 
-export default CourseModel;
+export default getCourseModel;

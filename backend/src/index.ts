@@ -2,12 +2,11 @@
 // Modules
 import cors from "cors";
 import { config } from "dotenv";
-import express, { Request, Response } from "express";
-import mongoose, { Mongoose } from "mongoose";
-import graphqlHTTP from 'express-graphql'
+import express from "express";
+import mongoose from "mongoose";
+import graphqlHTTP from "express-graphql";
 // Files
 import { schema, root } from "./graphql";
-import CourseModel from "./models/CourseModel"; //! test
 
 // --- Config
 config(); // Read .env file
@@ -27,18 +26,17 @@ app.use(cors({ origin: "*" })); // Allow cross-origin requests
 app.use(express.json()); // Parse JSON from requests
 
 // --- GraphQL endpoint
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root
-}));
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema: schema,
+    rootValue: root,
+  })
+);
 
-app.get('/test', async (req, res) => {
-    // Retrieve the first document from the Course collection
-    const firstCourse = await CourseModel.findOne().lean().exec();
-    // Log the retrieved document
-    console.log("First Course:", firstCourse);
-    res.send("Done")
-})
+app.get("/test", async (req, res) => {
+  res.send("Hello world!");
+});
 
 // --- Expose port
 app.listen(PORT); // Listen on port 5000 for requests

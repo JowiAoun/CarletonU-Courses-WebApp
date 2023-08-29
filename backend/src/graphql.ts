@@ -1,12 +1,9 @@
 import { buildSchema } from "graphql";
-import { findCoursesByCode, findCourseByTitle } from "./functions";
+import { findCourses } from "./functions";
 
 export const root = {
-  findCoursesByCode: async (code: string) => {
-    return await findCoursesByCode(code);
-  },
-  findCoursesByTitle: async (title: string) => {
-    return await findCourseByTitle(title);
+  findCourses: async (args: any) => {
+    return await findCourses(args);
   },
 };
 
@@ -61,33 +58,16 @@ export const schema = buildSchema(`
   }
 
   type Query {
-    findCoursesByCode(code: String): [Course]
-    findCoursesByTitle(title: String): [Course]
+    findCourses(
+      term_code: String,
+      code: String,
+      subject: String
+    ): [Course]
   }
 
-  input TermInput {
-    Summer: Boolean
-    Fall: Boolean
-    Winter: Boolean
+  input findCoursesArgs {
+    term_code: String
+    code: String
+    subject: String
   }
-  
-  input YearStandingInput {
-    firstYear: Boolean
-    secondYear: Boolean
-    thirdYear: Boolean
-    fourthYear: Boolean
-  }
-  
-  input SectionTypeInput {
-    in_person: Boolean
-    online: Boolean
-  }
-  
-  input CourseInput {
-    text: String
-    term: TermInput
-    year_standing: YearStandingInput
-    section_type: SectionTypeInput
-  }
-
 `);
