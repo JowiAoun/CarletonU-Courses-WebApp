@@ -61,13 +61,8 @@ export const schema = buildSchema(`
     findCourses(
       term_code: String,
       code: String,
-      subject: String
+      ltitle: String,
+      limit: Int
     ): [Course]
-  }
-
-  input findCoursesArgs {
-    term_code: String
-    code: String
-    subject: String
   }
 `);
