@@ -14,6 +14,7 @@ config(); // Read .env file
 // --- Constants
 const PORT = 5000; // Port for server
 const MONGODB_URI: string = process.env.MONGODB_URI!; // Get URI from .env file
+export const TERM_CODE = "202410";
 
 // --- App
 const app = express(); // Create app object
@@ -39,4 +40,6 @@ app.get("/test", async (req, res) => {
 });
 
 // --- Expose port
-app.listen(PORT); // Listen on port 5000 for requests
+app.listen(PORT, () => {
+  console.log("Server is up and running!");
+});

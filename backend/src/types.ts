@@ -3,7 +3,6 @@ export type Course = {
   subject: string;
   credits: number;
   ltitle: string;
-  level: string;
   description?: string;
   precludes?: string;
   prereqs?: string;

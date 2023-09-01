@@ -1,25 +1,76 @@
 import { buildSchema } from "graphql";
-import { findCourses } from "./functions";
+import { findCourses, addReview, deleteReview, editReview } from "./functions";
+// TODO: Use interfaces/types to link up with Course model
+// TODO: make imports from 'function' smaller
 
 export const root = {
+  // --- Querries
   findCourses: async (args: any) => {
     return await findCourses(args);
   },
+
+  // --- Mutations
+  addReview: async (args: any) => {
+    return await addReview(args);
+  },
+  deleteReview: async (args: any) => {
+    return await deleteReview(args);
+  },
+  editReview: async (args: any) => {
+    return await editReview(args);
+  },
 };
 
-export const schema = buildSchema(`
+export const schema = buildSchema(`#graphql
   type Course {
     code: String
     subject: String
     credits: Float
     ltitle: String
-    level: String
     description: String
     precludes: String
     prereqs: String
     schedule_general: String
     also_listed_as: String
-    reviews: [Review]
+    reviews: [Review!]!
+  }
+
+  type Review {
+    _id: Int
+    difficulty: Int
+    reviewed_on: Int
+    comment: String
+    author_id: Int
+  }
+
+  type Query {
+    findCourses(
+      code: String,
+      ltitle: String,
+      limit: Int
+    ): [Course],
+  }
+
+  type Mutation {
+    addReview(
+      code: String!,
+      author_id: Int!
+      difficulty: Int!,
+      comment: String,
+      reviewed_on: Int!,
+    ): Boolean,
+
+    deleteReview(
+      code: String!,
+      _id: String!,
+    ): Boolean,
+
+    editReview(
+      code: String!,
+      _id: String!,
+      difficulty: Int,
+      comment: String,
+    ): Boolean,
   }
 
   type CourseActive {
@@ -48,21 +99,5 @@ export const schema = buildSchema(`
     building: String
     room: String
     saved_on: Int
-  }
-
-  type Review {
-    difficulty: Int
-    reviewed_on: Int
-    comment: String
-    author_id: Int
-  }
-
-  type Query {
-    findCourses(
-      term_code: String,
-      code: String,
-      ltitle: String,
-      limit: Int
-    ): [Course]
   }
 `);

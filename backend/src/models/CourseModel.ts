@@ -1,6 +1,8 @@
 import { Document, Model, Schema, model } from "mongoose";
 import { Course } from "../types";
 
+const TERM_CODE = "202410";
+
 interface CourseDocument extends Course, Document {}
 
 const CourseSchema = new Schema({
@@ -27,8 +29,8 @@ const CourseSchema = new Schema({
   },
 });
 
-const getCourseModel = (term_code: string) => {
-  return model<CourseDocument>("courses-" + term_code, CourseSchema);
+const getCourseModel = () => {
+  return model<CourseDocument>("courses-" + TERM_CODE, CourseSchema);
 };
 
 export default getCourseModel;
