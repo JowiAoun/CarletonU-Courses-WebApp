@@ -14,7 +14,6 @@ config(); // Read .env file
 // --- Constants
 const PORT = 5000; // Port for server
 const MONGODB_URI: string = process.env.MONGODB_URI!; // Get URI from .env file
-export const TERM_CODE = "202410";
 
 // --- App
 const app = express(); // Create app object

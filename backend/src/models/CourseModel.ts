@@ -19,10 +19,10 @@ const CourseSchema = new Schema({
   reviews: {
     type: [
       {
-        difficulty: { type: Number, required: true },
-        reviewed_on: { type: Date, default: Date.now() },
-        comment: { type: String },
         author_id: { type: String, required: true },
+        difficulty: { type: Number, required: true },
+        comment: { type: String },
+        reviewed_on: { type: Number, default: Math.floor(Date.now()) },
       },
     ],
     default: [],
