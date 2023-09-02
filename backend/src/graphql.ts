@@ -6,6 +6,9 @@ import { resolvers } from "./resolvers";
 
 export const root = {
   // --- Querries
+  findCourse: async (args: any) => {
+    return await resolvers.findCourse(args);
+  },
   findCourses: async (args: any) => {
     return await resolvers.findCourses(args);
   },
@@ -55,6 +58,14 @@ export const schema = buildSchema(`#graphql
   }
 
   type Query {
+    """
+      Find a course by code or ltitle, but not both.
+    """
+    findCourse(
+      code: String,
+      ltitle: String
+    ): Course,
+
     """
       Find courses by code or ltitle, but not both.
       A limit of results can be set, to a maximum of 20.
