@@ -94,7 +94,7 @@ export const schema = buildSchema(`#graphql
     editReview(
       code: String!,
       _id: String!,
-      difficulty: Int,
+      difficulty: Int!,
       comment: String,
     ): Boolean,
 
