@@ -41,34 +41,47 @@ export default function SearchPage() {
     var form = event.target;
     var formData = new FormData(form);
     const formDataJSON = {};
-    var parsedData;
 
     formData.forEach((value, key) => {
       formDataJSON[key] = value;
     });
 
-    //new version
-    // Make an API request using fetch or XMLHttpRequest
+    const query = `
+    query FindCourses {
+      findCourses(code: "${formDataJSON.searchBar}") {
+          code
+          subject
+          credits
+          ltitle
+          description
+          precludes
+          prereqs
+          schedule_general
+          also_listed_as
+      }
+    }
+    `;
 
-    fetch("http://localhost:5000/api/search", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formDataJSON),
+    const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ query: query }),
+    };
+
+    fetch("http://localhost:5000/graphql", requestOptions)
+    .then(response => response.json()) // Parse the response as JSON
+    .then(data => data.data.findCourses) // Select the relevant data from the response
+    .then(parsedData => {
+      console.log('Response:', parsedData);
+      setCourses(parsedData);
+      navigate("/courses");
     })
-      .then((response) => response.text())
-      .then((data) => {
-        // Access the response data here
-        //console.log(data);
-        parsedData = JSON.parse(data);
-        setCourses(parsedData);
-        navigate("/courses");
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the request
-        console.error(error);
-      });
+    .catch(error => {
+      console.error('Error:', error);
+      // Handle errors
+    });
   }
 
   useEffect(() => {

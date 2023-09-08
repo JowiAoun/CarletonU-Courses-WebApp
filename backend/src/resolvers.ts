@@ -40,7 +40,7 @@ export const resolvers = {
           "Error finding courses: Both code and ltitle provided. Please only search by one."
         );
       } else if (code) {
-        query = { code: code };
+        query = { code: { $regex: code, $options: "i"} };
       } else if (ltitle) {
         query = { ltitle: { $regex: ltitle, $options: "i" } };
       } else {
