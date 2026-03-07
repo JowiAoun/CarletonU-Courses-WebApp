@@ -1,5 +1,5 @@
 # CarletonU-Courses-WebApp
- Web app for finding information about courses on CarletonU. Project ceated by John Lu (frontend) and Jowi Aoun (backend)
+ Web app for finding information about courses on CarletonU. Project created by John Lu (frontend) and Jowi Aoun (backend)
 
 Steps to run web app in development mode:
 1. Open terminal
